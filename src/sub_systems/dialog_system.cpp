@@ -85,7 +85,7 @@ bool DialogSystem::step(float elapsed_ms) {
 			return false;
 			break;
 		}
-		case DIALOG_STATUS::AWAIT_ACTION:
+		case DIALOG_STATUS::AWAIT_ACTION: {
 			skip_timer = fmax(skip_timer - elapsed_ms, 0.f);
 			if (current_stage.is_action_performed()) {
 				registry.remove_all_components_of(rendered_entity);
@@ -98,6 +98,7 @@ bool DialogSystem::step(float elapsed_ms) {
 				return false;
 			}
 			break;
+		}
 		//case DIALOG_STATUS::ACTION_TIMER:
 		//	current_stage.skip_delay_duration -= elapsed_ms;
 		//	if (current_stage.skip_delay_duration <= 0) {
@@ -105,7 +106,7 @@ bool DialogSystem::step(float elapsed_ms) {
 		//		dialogs.pop();
 		//	}
 		//	break;
-		case DIALOG_STATUS::MOVING_CAMERA:
+		case DIALOG_STATUS::MOVING_CAMERA: {
 			current_stage.camera_timer -= elapsed_ms;
 			vec2 current_pos = current_stage.start_pos * (max(0.f, current_stage.camera_timer) / current_stage.camera_duration) + 
 							   current_stage.end_pos * (1.f - (max(0.f, current_stage.camera_timer) / current_stage.camera_duration));
@@ -118,8 +119,7 @@ bool DialogSystem::step(float elapsed_ms) {
 				return false;
 			}
 			break;
-		default:
-			break;
+		}
 		}
 		previous_mouse = mouse;
 	}

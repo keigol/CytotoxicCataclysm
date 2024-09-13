@@ -1,5 +1,6 @@
 #pragma once
-
+#define TRUE 1
+#define FALSE 0
 // internal
 #include "common.hpp"
 #include "render_system.hpp"
@@ -8,6 +9,7 @@
 #include "./sub_systems/menu_system.hpp"
 
 // stlib
+#include <list>
 #include <vector>
 #include <random>
 

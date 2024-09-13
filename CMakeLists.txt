@@ -52,6 +52,8 @@ file(COPY "shaders" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/")
 if (IS_OS_MAC)
   include_directories(/usr/local/include)
   link_directories(/usr/local/lib)
+  include_directories(/opt/homebrew/include)
+  link_directories(/opt/homebrew/lib)
 endif()
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
